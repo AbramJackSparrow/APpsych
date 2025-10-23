@@ -1,282 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Interactive Brain Diagram – AP Psychology</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Psychology Interactive Brain Map</title>
 <style>
-  :root {
-    --dot-size: 34px;        /* visible clickable dot size */
-    --dot-color: rgba(255,0,255,0.85);
-    --dot-border: #00ffff;
-    --tooltip-w: 300px;
+  body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    text-align: center;
+    margin: 20px;
   }
 
-  body{
-    margin:0;
-    padding:24px;
-    background:#000;
-    color:#fff;
-    font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    text-align:center;
+  h1 {
+    margin-bottom: 40px;
   }
 
-  h1 { margin: 0 0 18px 0; font-weight:600; color:#fff; }
-  .note { color:#bbb; margin-bottom:18px; }
+  .section-label {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+  }
 
   .brain-container {
     position: relative;
-    display:inline-block;
-    max-width:800px;
-    width:100%;
-    margin: 14px;
+    display: inline-block;
   }
 
-  .brain-container img {
-    width:100%;
-    height:auto;
-    display:block;
-    border-radius:10px;
-    border:2px solid #222;
-    background:transparent;
+  .brain-outer, .brain-inner {
+    width: 700px;
+    height: auto;
   }
 
-  /* visible hotspot dots */
   .dot {
-    position:absolute;
-    width:var(--dot-size);
-    height:var(--dot-size);
-    border-radius:50%;
-    background:var(--dot-color);
-    border:3px solid var(--dot-border);
-    transform:translate(-50%,-50%);
-    cursor:pointer;
-    box-shadow:0 0 12px rgba(0,255,255,0.12), 0 0 8px rgba(255,0,255,0.12);
-    transition: transform .12s ease, box-shadow .12s ease;
-    z-index:5;
-  }
-  .dot:hover { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 0 18px rgba(0,255,255,0.25); }
-
-  /* tooltip box (one per container) */
-  .tooltip {
-    position:absolute;
-    width:var(--tooltip-w);
-    max-width:calc(100% - 24px);
-    background:#0e0e0e;
-    color:#fff;
-    border:2px solid var(--dot-border);
-    border-radius:10px;
-    padding:10px 12px;
-    font-size:14px;
-    text-align:left;
-    display:none;
-    z-index:20;
-    box-shadow:0 8px 30px rgba(0,0,0,0.6);
-    line-height:1.25;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    opacity: 0.75;
+    transition: transform 0.2s, opacity 0.2s;
   }
 
-  .tooltip strong { display:block; margin-bottom:6px; color:#fff; }
-
-  /* reference image */
-  .reference {
-    margin-top:28px;
-  }
-  .reference img {
-    width:80%;
-    max-width:860px;
-    border-radius:8px;
-    border:2px solid #222;
+  .dot:hover {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.3);
   }
 
-  /* small screen adjustments */
-  @media (max-width:520px){
-    :root { --dot-size: 26px; --tooltip-w: 230px; }
-    .brain-container { margin:10px 0; }
+  .info-box {
+    position: absolute;
+    display: none;
+    background: white;
+    color: #000;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    padding: 8px;
+    width: 180px;
+    font-size: 0.9em;
+    text-align: left;
+    z-index: 10;
+    transform: translate(-50%, -130%);
+  }
+
+  .dot:hover + .info-box {
+    display: block;
   }
 </style>
 </head>
 <body>
 
-  <h1>Interactive Brain Diagram — AP Psychology</h1>
-  <div class="note">Hover the glowing dots to see the name and description for each brain part.</div>
+<h1>AP Psychology Interactive Brain Map</h1>
 
-  <!-- OUTER BRAIN -->
-  <div class="brain-container" id="outer-container">
-    <img src="Brain-outer.PNG" alt="Outer brain view (cerebrum lobes etc.)">
+<!-- OUTER BRAIN -->
+<h2 class="section-label">Outer Brain (Lobes & Cortexes)</h2>
+<div class="brain-container">
+  <img src="Brain-outer.PNG" alt="Outer Brain" class="brain-outer">
 
-    <!-- Dots on outer brain (positions are percentages relative to the image) -->
-    <!-- Cerebrum (general, centered/high) -->
-    <div class="dot" style="top:26%; left:50%;" data-name="Cerebrum" data-desc="The cerebrum is responsible for Cognitive processing, motor control, sensory perception, understanding and speaking language, and regulating emotion.\n\nThe Cerebrum is made of the frontal, parietal, temporal, and occipital lobes."></div>
+  <!-- 1. Cerebrum -->
+  <div class="dot" style="top: 160%; left: 30%;"></div>
+  <div class="info-box"><strong>Cerebrum</strong><br>Responsible for cognitive processing, motor control, and emotional regulation. Includes the major lobes.</div>
 
-    <!-- Frontal Lobes -->
-    <div class="dot" style="top:30%; left:30%;" data-name="Frontal Lobes" data-desc="The frontal lobes contain the\nOlfactory Bulb\nMotor Cortex\nBroca’s Area"></div>
+  <!-- 2. Frontal Lobes -->
+  <div class="dot" style="top: 40%; left: 25%;"></div>
+  <div class="info-box"><strong>Frontal Lobes</strong><br>Decision-making, reasoning, and voluntary movement.</div>
 
-    <!-- Parietal Lobes -->
-    <div class="dot" style="top:36%; left:55%;" data-name="Parietal Lobes" data-desc="The parietal lobes are both located in the cerebrum, and are responsible for processing sensory information."></div>
+  <!-- 3. Parietal Lobes -->
+  <div class="dot" style="top: 30%; left: 55%;"></div>
+  <div class="info-box"><strong>Parietal Lobes</strong><br>Process touch, temperature, and spatial information.</div>
 
-    <!-- Occipital Lobes -->
-    <div class="dot" style="top:45%; left:82%;" data-name="Occipital Lobes" data-desc="The occipital lobe is the smallest of the lobes, and is located the furthest in the back of the brain.\n\nThe occipital lobe is responsible for spatial and color processing, depth perception, and object recognition."></div>
+  <!-- 4. Temporal Lobes -->
+  <div class="dot" style="top: 55%; left: 45%;"></div>
+  <div class="info-box"><strong>Temporal Lobes</strong><br>Hearing, language comprehension, and memory.</div>
 
-    <!-- Temporal Lobes -->
-    <div class="dot" style="top:54%; left:36%;" data-name="Temporal Lobes" data-desc="The temporal lobes are located on both sides of the brain.\nContains the\nAmygdala\nHippocampus\nWernicke’s Area"></div>
+  <!-- 5. Occipital Lobes -->
+  <div class="dot" style="top: 45%; left: 86%;"></div>
+  <div class="info-box"><strong>Occipital Lobes</strong><br>Vision, color, and depth perception.</div>
 
-    <!-- Somatosensory Cortex -->
-    <div class="dot" style="top:38%; left:60%;" data-name="Somatosensory Cortex" data-desc="The Somatosensory Cortex is located in the parietal lobe and is responsible for processing sensory information such as\nTouch\nTemperature\nPain\nAnd more"></div>
+  <!-- 6. Somatosensory Cortex -->
+  <div class="dot" style="top: 157%; left: 51%;"></div>
+  <div class="info-box"><strong>Somatosensory Cortex</strong><br>Processes sensory information like touch and temperature.</div>
 
-    <!-- Motor Cortex -->
-    <div class="dot" style="top:28%; left:42%;" data-name="Motor Cortex" data-desc="The Motor Cortex is responsible for voluntary movement."></div>
+  <!-- 7. Motor Cortex -->
+  <div class="dot" style="top: 150%; left: 35%;"></div>
+  <div class="info-box"><strong>Motor Cortex</strong><br>Controls voluntary movements.</div>
 
-    <!-- Broca's Area (speech production) -->
-    <div class="dot" style="top:34%; left:25%;" data-name="Broca’s Area" data-desc="The Broca’s Area is crucial for speech production and language processing."></div>
+  <!-- 8. Broca’s Area -->
+  <div class="dot" style="top: 45%; left: 35%;"></div>
+  <div class="info-box"><strong>Broca’s Area</strong><br>Speech production and language processing.</div>
 
-    <!-- Wernicke's Area (language comprehension) -->
-    <div class="dot" style="top:46%; left:38%;" data-name="Wernicke’s Area" data-desc="The Wernicke’s Area is responsible for language comprehension, written and spoken."></div>
+  <!-- 9. Wernicke’s Area -->
+  <div class="dot" style="top: 55%; left: 65%;"></div>
+  <div class="info-box"><strong>Wernicke’s Area</strong><br>Understanding written and spoken language.</div>
 
-    <!-- Olfactory Bulb (front underside, approximate) -->
-    <div class="dot" style="top:18%; left:38%;" data-name="Olfactory Bulb" data-desc="The Olfactory Bulb processes smell."></div>
+  <!-- 10. Olfactory Bulb -->
+  <div class="dot" style="top: 190%; left: 20%;"></div>
+  <div class="info-box"><strong>Olfactory Bulb</strong><br>Processes the sense of smell.</div>
 
-    <!-- Cerebellum (outer view; appears at back/bottom) -->
-    <div class="dot" style="top:70%; left:85%;" data-name="Cerebellum" data-desc="“The little brain” is responsible for motor skills such as coordination and balance."></div>
+  <!-- 11. Cerebellum -->
+  <div class="dot" style="top: 80%; left: 70%;"></div>
+  <div class="info-box"><strong>Cerebellum</strong><br>Balance, coordination, and fine motor control.</div>
+</div>
 
-    <!-- tooltip box for outer -->
-    <div class="tooltip" id="tooltip-outer"></div>
-  </div>
+<!-- INNER BRAIN -->
+<h2 class="section-label">Inner Brain (Internal Structures)</h2>
+<div class="brain-container">
+  <img src="brain-inner.PNG" alt="Inner Brain" class="brain-inner">
 
-  <!-- INNER BRAIN -->
-  <div class="brain-container" id="inner-container" style="margin-top:28px;">
-    <img src="brain-inner.PNG" alt="Inner brain view (subcortical structures)">
+  <!-- 12. Amygdala -->
+  <div class="dot" style="top: 60%; left: 55%;"></div>
+  <div class="info-box"><strong>Amygdala</strong><br>Processes emotions like fear and pleasure.</div>
 
-    <!-- Inner hotspots -->
+  <!-- 13. Thalamus -->
+  <div class="dot" style="top: 45%; left: 50%;"></div>
+  <div class="info-box"><strong>Thalamus</strong><br>Relays sensory and motor signals to the cortex.</div>
 
-    <!-- Amygdala -->
-    <div class="dot" style="top:52%; left:48%;" data-name="Amygdala" data-desc="The Amygdala is an almond shaped piece of gray matter located in the cerebral hemisphere responsible for experiencing emotion."></div>
+  <!-- 14. Hypothalamus -->
+  <div class="dot" style="top: 50%; left: 52%;"></div>
+  <div class="info-box"><strong>Hypothalamus</strong><br>Controls hunger, thirst, and body temperature.</div>
 
-    <!-- Thalamus -->
-    <div class="dot" style="top:40%; left:52%;" data-name="Thalamus" data-desc="The thalamus relays sensory and motor signals to the cerebral cortex."></div>
+  <!-- 15. Hippocampus -->
+  <div class="dot" style="top: 65%; left: 55%;"></div>
+  <div class="info-box"><strong>Hippocampus</strong><br>Forms and stores long-term memories.</div>
 
-    <!-- Hypothalamus -->
-    <div class="dot" style="top:52%; left:58%;" data-name="Hypothalamus" data-desc="The hypothalamus\nregulates temperature\nHunger\nThrust\nSleep\nemotional responses.\nActs as a link between the nervous system and the endocrine system"></div>
+  <!-- 16. Pituitary Gland -->
+  <div class="dot" style="top: 70%; left: 55%;"></div>
+  <div class="info-box"><strong>Pituitary Gland</strong><br>Regulates hormones and other endocrine glands.</div>
 
-    <!-- Hippocampus -->
-    <div class="dot" style="top:58%; left:46%;" data-name="Hippocampus" data-desc="The hippocampus is responsible for forming long term memories and special navigation."></div>
+  <!-- 17. Medulla -->
+  <div class="dot" style="top: 95%; left: 70%;"></div>
+  <div class="info-box"><strong>Medulla (Oblongata)</strong><br>Controls heartbeat, breathing, and reflexes.</div>
 
-    <!-- Pituitary gland -->
-    <div class="dot" style="top:64%; left:60%;" data-name="Pituitary gland" data-desc="The Pituitary gland is responsible for regulating many bodily functions via releasing hormones that control other endocrine glands."></div>
+  <!-- 18. Corpus Callosum -->
+  <div class="dot" style="top: 37%; left: 45%;"></div>
+  <div class="info-box"><strong>Corpus Callosum</strong><br>Connects the brain’s hemispheres.</div>
 
-    <!-- Medulla (oblongata) -->
-    <div class="dot" style="top:82%; left:62%;" data-name="Medulla (oblongata)" data-desc="The medulla oblongata is located at the base of the brainstem and regulates involuntary functions such as breathing and heart rate."></div>
+  <!-- 19. Pons -->
+  <div class="dot" style="top: 70%; left: 43%;"></div>
+  <div class="info-box"><strong>Pons</strong><br>Relays signals between the cerebrum and cerebellum.</div>
 
-    <!-- Corpus callosum -->
-    <div class="dot" style="top:26%; left:44%;" data-name="Corpus callosum" data-desc="The Corpus callosum is a bundle of nerve fibers that connects the left and right hemispheres of the brain and allows communication for coordination of important functions like movement and sensory processing."></div>
-
-    <!-- Motor Cortex (inner projection approximate; show here too) -->
-    <div class="dot" style="top:30%; left:38%;" data-name="Motor Cortex" data-desc="The Motor Cortex is responsible for voluntary movement."></div>
-
-    <!-- Pons -->
-    <div class="dot" style="top:74%; left:58%;" data-name="Pons" data-desc="The Pons is located in the brain stem and is responsible for relaying signals between the brain and spinal cord."></div>
-
-    <!-- Wernicke's Area (inner reference) -->
-    <div class="dot" style="top:48%; left:40%;" data-name="Wernicke’s Area" data-desc="The Wernicke’s Area is responsible for language comprehension, written and spoken."></div>
-
-    <!-- Broca's Area (inner reference) -->
-    <div class="dot" style="top:34%; left:34%;" data-name="Broca’s Area" data-desc="The Broca’s Area is crucial for speech production and language processing."></div>
-
-    <!-- Basal Ganglia -->
-    <div class="dot" style="top:46%; left:50%;" data-name="Basal Ganglia" data-desc="The Basal Ganglia plays a crucial role in controlling voluntary movement and influences learning, emotions, and habit forming."></div>
-
-    <!-- tooltip for inner -->
-    <div class="tooltip" id="tooltip-inner"></div>
-  </div>
-
-  <!-- reference image (bottom) -->
-  <div class="reference">
-    <img src="fdadf.PNG" alt="Reference labelled brain diagram">
-    <div style="color:#aaa; font-size:13px; margin-top:8px;">Reference diagram (for study / labeling)</div>
-  </div>
-
-<script>
-  // Generic tooltip handling for each brain-container
-  function setupTooltips(containerId, tooltipId) {
-    const container = document.getElementById(containerId);
-    const tooltip = document.getElementById(tooltipId);
-    // delegate to dots inside container
-    container.querySelectorAll('.dot').forEach(dot=>{
-      // handle hover / focus
-      dot.addEventListener('mouseenter', (e)=>{
-        showTooltip(e.currentTarget, container, tooltip);
-      });
-      dot.addEventListener('focus', (e)=>{
-        showTooltip(e.currentTarget, container, tooltip);
-      });
-      dot.addEventListener('mouseleave', ()=>{
-        tooltip.style.display='none';
-      });
-      dot.addEventListener('blur', ()=>{
-        tooltip.style.display='none';
-      });
-      // also allow click to toggle on touch devices
-      dot.addEventListener('click', (ev)=>{
-        // show momentarily (or toggle)
-        if(tooltip.style.display === 'block') {
-          tooltip.style.display = 'none';
-        } else {
-          showTooltip(ev.currentTarget, container, tooltip);
-        }
-        // prevent default
-        ev.preventDefault();
-      });
-    });
-  }
-
-  function showTooltip(dot, container, tooltip) {
-    const name = dot.dataset.name || '';
-    const desc = dot.dataset.desc || '';
-    // set content (preserve newlines)
-    tooltip.innerHTML = `<strong>${escapeHtml(name)}</strong><div style="white-space:pre-wrap">${escapeHtml(desc)}</div>`;
-    // compute position: place tooltip slightly above the dot, but keep inside container
-    const containerRect = container.getBoundingClientRect();
-    const dotRect = dot.getBoundingClientRect();
-    // relative positions
-    const dotCenterX = dotRect.left + dotRect.width/2 - containerRect.left;
-    const dotCenterY = dotRect.top + dotRect.height/2 - containerRect.top;
-    // desired tooltip position
-    const tooltipWidth = Math.min(300, containerRect.width - 16);
-    tooltip.style.width = (tooltipWidth) + 'px';
-    let left = dotCenterX - tooltipWidth/2;
-    if (left < 8) left = 8;
-    if (left + tooltipWidth > containerRect.width - 8) left = containerRect.width - tooltipWidth - 8;
-    let top = dotCenterY - dotRect.height/2 - 12 - tooltip.offsetHeight;
-    // set temporarily visible to measure height
-    tooltip.style.display = 'block';
-    // remeasure if needed
-    const ttHeight = tooltip.offsetHeight;
-    top = dotCenterY - dotRect.height/2 - 12 - ttHeight;
-    // if not enough space above, place below dot
-    if (top < 8) top = dotCenterY + dotRect.height/2 + 12;
-    tooltip.style.left = left + 'px';
-    tooltip.style.top = top + 'px';
-    tooltip.style.display = 'block';
-  }
-
-  // small helper to escape HTML
-  function escapeHtml(str){
-    if(!str) return '';
-    return str.replace(/&/g,'&amp;')
-              .replace(/</g,'&lt;')
-              .replace(/>/g,'&gt;')
-              .replace(/"/g,'&quot;')
-              .replace(/'/g,'&#039;');
-  }
-
-  // initialize both containers
-  setupTooltips('outer-container','tooltip-outer');
-  setupTooltips('inner-container','tooltip-inner');
-
-  // reposition tooltips on window resize so they stay aligned
-  window.addEventListener('resize', ()=>{
-    document.querySelectorAll('.tooltip').forEach(t => t.style.display='none');
-  });
-</script>
+  <!-- 20. Basal Ganglia -->
+  <div class="dot" style="top: 60%; left: 50%;"></div>
+  <div class="info-box"><strong>Basal Ganglia</strong><br>Coordinates movement and habit formation.</div>
+</div>
 
 </body>
 </html>
