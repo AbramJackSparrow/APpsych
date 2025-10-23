@@ -3,71 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Brain Diagram</title>
+<title>Interactive Brain Diagram – AP Psychology</title>
 
 <style>
   body {
     background-color: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
     color: #fff;
     font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
   }
 
   h1 {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .brain-container {
     position: relative;
-    max-width: 800px;
+    display: inline-block;
+    margin: 20px;
   }
 
-  img {
-    width: 100%;
+  .brain-container img {
+    width: 400px;
     height: auto;
-    border: 2px solid #444;
     border-radius: 12px;
+    border: 2px solid #333;
+  }
+
+  /* Visible hotspots */
+  .dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 0, 255, 0.7);
+    border: 2px solid #00ffff;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Tooltip popup */
+  .tooltip {
+    position: absolute;
+    background-color: #111;
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+    text-align: left;
+    font-size: 0.9rem;
+    width: 260px;
+    display: none;
+    z-index: 10;
+  }
+
+  .brain-container:hover .tooltip {
     display: block;
   }
 
-  .caption {
-    margin-top: 10px;
-    text-align: center;
-    color: #ccc;
-    font-size: 1rem;
+  .reference {
+    margin-top: 40px;
+  }
+
+  .reference img {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 12px;
   }
 </style>
 </head>
 <body>
 
-  <h1>Interactive Brain Diagram</h1>
+<h1>Interactive Brain Diagram – AP Psychology</h1>
 
-  <!-- OUTER BRAIN -->
-  <div class="brain-container">
-    <img src="Brain-outer.PNG" alt="Brain Outer" usemap="#outermap">
-    <map name="outermap">
-      <!-- Big circular clickable dots -->
-      <area shape="circle" coords="260,180,30" href="frontal.html" alt="Frontal Lobe">
-      <area shape="circle" coords="430,300,30" href="cerebellum.html" alt="Cerebellum">
-      <area shape="circle" coords="550,250,30" href="occipital.html" alt="Occipital Lobe">
-    </map>
-    <p class="caption">Outer view of the brain</p>
-  </div>
+<div class="brain-container">
+  <img src="Brain-outer.PNG" alt="Outer Brain">
 
-  <!-- INNER BRAIN -->
-  <div class="brain-container" style="margin-top: 40px;">
-    <img src="brain-inner.PNG" alt="Brain Inner" usemap="#innermap">
-    <map name="innermap">
-      <area shape="circle" coords="260,180,30" href="frontal-inner.html" alt="Frontal Lobe (Inner)">
-      <area shape="circle" coords="430,300,30" href="cerebellum-inner.html" alt="Cerebellum (Inner)">
-      <area shape="circle" coords="550,250,30" href="occipital-inner.html" alt="Occipital Lobe (Inner)">
-    </map>
-    <p class="caption">Inner view of the brain</p>
-  </div>
+  <!-- Example outer hotspots -->
+  <div class="dot" style="top:40%; left:40%;" data-name="Frontal Lobes" data-desc="Responsible for higher cognitive functions such as reasoning, planning, and speech production."></div>
+  <div class="dot" style="top:35%; left:70%;" data-name="Occipital Lobes" data-desc="Responsible for visual processing and color recognition."></div>
+  <div class="dot" style="top:45%; left:55%;" data-name="Parietal Lobes" data-desc="Processes sensory information like touch, pressure, and pain."></div>
+  <div class="dot" style="top:55%; left:45%;" data-name="Temporal Lobes" data-desc="Involved in hearing, memory, and speech."></div>
+  <div class="dot" style="top:70%; left:80%;" data-name="Cerebellum" data-desc="Responsible for balance and coordination."></div>
+
+  <div class="tooltip" id="tooltip"></div>
+</div>
+
+<div class="brain-container">
+  <img src="brain-inner.PNG" alt="Inner Brain">
+
+  <!-- Example inner hotspots -->
+  <div class="dot" style="top:55%; left:38%;" data-name="Thalamus" data-desc="Relays sensory and motor signals to the cerebral cortex."></div>
+  <div class="dot" style="top:60%; left:42%;" data-name="Hypothalamus" data-desc="Regulates body temperature, hunger, and emotional responses."></div>
+  <div class="dot" style="top:68%; left:44%;" data-name="Pituitary Gland" data-desc="Releases hormones that regulate bodily functions."></div>
+  <div class="dot" style="top:58%; left:48%;" data-name="Hippocampus" data-desc="Responsible for memory formation and spatial navigation."></div>
+  <div class="dot" style="top:50%; left:50%;" data-name="Amygdala" data-desc="Processes emotion and fear responses."></div>
+
+  <div class="tooltip" id="tooltip2"></div>
+</div>
+
+<div class="reference">
+  <img src="fdadf.PNG" alt="Labeled Brain Reference">
+</div>
+
+<script>
+  // Tooltip handling for both images
+  document.querySelectorAll('.dot').forEach(dot => {
+    dot.addEventListener('mouseover', e => {
+      const tooltip = e.target.parentElement.querySelector('.tooltip');
+      tooltip.innerHTML = `<strong>${e.target.dataset.name}</strong><br>${e.target.dataset.desc}`;
+      tooltip.style.left = `${parseFloat(e.target.style.left) + 5}%`;
+      tooltip.style.top = `${parseFloat(e.target.style.top)}%`;
+      tooltip.style.display = 'block';
+    });
+    dot.addEventListener('mouseout', e => {
+      const tooltip = e.target.parentElement.querySelector('.tooltip');
+      tooltip.style.display = 'none';
+    });
+  });
+</script>
 
 </body>
 </html>
