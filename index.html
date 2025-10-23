@@ -1,26 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AP Psychology Interactive Brain Map</title>
+<title>Creative Brain Project</title>
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: #fafafa;
+    background: #000; /* Changed background to black */
+    color: #fff; /* Make text white for visibility */
     text-align: center;
     margin: 20px;
   }
 
   h1 {
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .subtitle {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    color: #ddd;
+  }
+
+  .author {
+    font-size: 1em;
     margin-bottom: 40px;
+    color: #aaa;
   }
 
   .section-label {
     margin-top: 60px;
     margin-bottom: 20px;
     font-size: 1.5em;
-    color: #333;
+    color: #fff;
   }
 
   .brain-container {
@@ -53,8 +65,8 @@
   .info-box {
     position: absolute;
     display: none;
-    background: white;
-    color: #000;
+    background: #222;
+    color: #fff;
     border: 1px solid #aaa;
     border-radius: 10px;
     padding: 8px;
@@ -68,60 +80,54 @@
   .dot:hover + .info-box {
     display: block;
   }
+
+  .disclaimer {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 60px;
+  }
 </style>
 </head>
 <body>
 
-<h1>AP Psychology Interactive Brain Map</h1>
+<h1>Creative Brain Project</h1>
+
+<div class="subtitle">AP Psycology</div>
+<div class="author">- Abram Jack Sparrow</div>
+
 
 <!-- OUTER BRAIN -->
-<h2 class="section-label">Outer Brain (Lobes & Cortexes)</h2>
+<h2 class="section-label">Outer Brain (Lobes &amp; Cortexes)</h2>
 <div class="brain-container">
   <img src="Brain-outer.PNG" alt="Outer Brain" class="brain-outer">
 
   <!-- 1. Cerebrum -->
-  <div class="dot" style="top: 160%; left: 30%;"></div>
-  <div class="info-box"><strong>Cerebrum</strong><br>Responsible for cognitive processing, motor control, and emotional regulation. Includes the major lobes.</div>
+  <div class="dot" style="top: 45%; left: 45%;"></div>
+  <div class="info-box"><strong>Cerebrum</strong><br>Main part of the brain, responsible for higher functions like thought, action, and emotion.</div>
 
   <!-- 2. Frontal Lobes -->
-  <div class="dot" style="top: 40%; left: 25%;"></div>
-  <div class="info-box"><strong>Frontal Lobes</strong><br>Decision-making, reasoning, and voluntary movement.</div>
+  <div class="dot" style="top: 42%; left: 25%;"></div>
+  <div class="info-box"><strong>Frontal Lobes</strong><br>Decision-making, planning, problem-solving, and motor control.</div>
 
   <!-- 3. Parietal Lobes -->
-  <div class="dot" style="top: 30%; left: 55%;"></div>
-  <div class="info-box"><strong>Parietal Lobes</strong><br>Process touch, temperature, and spatial information.</div>
+  <div class="dot" style="top: 38%; left: 55%;"></div>
+  <div class="info-box"><strong>Parietal Lobes</strong><br>Processes sensory information like touch, temperature, and spatial awareness.</div>
 
   <!-- 4. Temporal Lobes -->
   <div class="dot" style="top: 55%; left: 45%;"></div>
-  <div class="info-box"><strong>Temporal Lobes</strong><br>Hearing, language comprehension, and memory.</div>
+  <div class="info-box"><strong>Temporal Lobes</strong><br>Processes sound and is involved in memory and language comprehension.</div>
 
   <!-- 5. Occipital Lobes -->
-  <div class="dot" style="top: 45%; left: 86%;"></div>
-  <div class="info-box"><strong>Occipital Lobes</strong><br>Vision, color, and depth perception.</div>
+  <div class="dot" style="top: 50%; left: 85%;"></div>
+  <div class="info-box"><strong>Occipital Lobes</strong><br>Responsible for visual processing.</div>
 
   <!-- 6. Somatosensory Cortex -->
-  <div class="dot" style="top: 157%; left: 51%;"></div>
-  <div class="info-box"><strong>Somatosensory Cortex</strong><br>Processes sensory information like touch and temperature.</div>
+  <div class="dot" style="top: 40%; left: 50%;"></div>
+  <div class="info-box"><strong>Somatosensory Cortex</strong><br>Processes touch and body sensations.</div>
 
-  <!-- 7. Motor Cortex -->
-  <div class="dot" style="top: 150%; left: 35%;"></div>
-  <div class="info-box"><strong>Motor Cortex</strong><br>Controls voluntary movements.</div>
-
-  <!-- 8. Broca’s Area -->
-  <div class="dot" style="top: 45%; left: 35%;"></div>
-  <div class="info-box"><strong>Broca’s Area</strong><br>Speech production and language processing.</div>
-
-  <!-- 9. Wernicke’s Area -->
-  <div class="dot" style="top: 55%; left: 65%;"></div>
-  <div class="info-box"><strong>Wernicke’s Area</strong><br>Understanding written and spoken language.</div>
-
-  <!-- 10. Olfactory Bulb -->
-  <div class="dot" style="top: 190%; left: 20%;"></div>
-  <div class="info-box"><strong>Olfactory Bulb</strong><br>Processes the sense of smell.</div>
-
-  <!-- 11. Cerebellum -->
+  <!-- 7. Cerebellum -->
   <div class="dot" style="top: 80%; left: 70%;"></div>
-  <div class="info-box"><strong>Cerebellum</strong><br>Balance, coordination, and fine motor control.</div>
+  <div class="info-box"><strong>Cerebellum</strong><br>Controls coordination, balance, and fine motor skills.</div>
 </div>
 
 <!-- INNER BRAIN -->
@@ -129,9 +135,25 @@
 <div class="brain-container">
   <img src="brain-inner.PNG" alt="Inner Brain" class="brain-inner">
 
+  <!-- 8. Motor Cortex -->
+  <div class="dot" style="top: 42%; left: 40%;"></div>
+  <div class="info-box"><strong>Motor Cortex</strong><br>Controls voluntary movement.</div>
+
+  <!-- 9. Broca’s Area -->
+  <div class="dot" style="top: 50%; left: 40%;"></div>
+  <div class="info-box"><strong>Broca’s Area</strong><br>Speech production and articulation.</div>
+
+  <!-- 10. Wernicke’s Area -->
+  <div class="dot" style="top: 60%; left: 60%;"></div>
+  <div class="info-box"><strong>Wernicke’s Area</strong><br>Language comprehension.</div>
+
+  <!-- 11. Olfactory Bulb -->
+  <div class="dot" style="top: 70%; left: 25%;"></div>
+  <div class="info-box"><strong>Olfactory Bulb</strong><br>Processes the sense of smell.</div>
+
   <!-- 12. Amygdala -->
-  <div class="dot" style="top: 60%; left: 55%;"></div>
-  <div class="info-box"><strong>Amygdala</strong><br>Processes emotions like fear and pleasure.</div>
+  <div class="dot" style="top: 63%; left: 55%;"></div>
+  <div class="info-box"><strong>Amygdala</strong><br>Regulates emotion, especially fear and aggression.</div>
 
   <!-- 13. Thalamus -->
   <div class="dot" style="top: 45%; left: 50%;"></div>
@@ -139,32 +161,26 @@
 
   <!-- 14. Hypothalamus -->
   <div class="dot" style="top: 50%; left: 52%;"></div>
-  <div class="info-box"><strong>Hypothalamus</strong><br>Controls hunger, thirst, and body temperature.</div>
+  <div class="info-box"><strong>Hypothalamus</strong><br>Regulates hunger, thirst, temperature, and emotions.</div>
 
   <!-- 15. Hippocampus -->
-  <div class="dot" style="top: 65%; left: 55%;"></div>
-  <div class="info-box"><strong>Hippocampus</strong><br>Forms and stores long-term memories.</div>
+  <div class="dot" style="top: 67%; left: 50%;"></div>
+  <div class="info-box"><strong>Hippocampus</strong><br>Essential for forming new memories.</div>
 
   <!-- 16. Pituitary Gland -->
-  <div class="dot" style="top: 70%; left: 55%;"></div>
-  <div class="info-box"><strong>Pituitary Gland</strong><br>Regulates hormones and other endocrine glands.</div>
+  <div class="dot" style="top: 72%; left: 53%;"></div>
+  <div class="info-box"><strong>Pituitary Gland</strong><br>Produces hormones and regulates growth and metabolism.</div>
 
-  <!-- 17. Medulla -->
-  <div class="dot" style="top: 95%; left: 70%;"></div>
-  <div class="info-box"><strong>Medulla (Oblongata)</strong><br>Controls heartbeat, breathing, and reflexes.</div>
+  <!-- 17. Medulla (Oblongata) -->
+  <div class="dot" style="top: 90%; left: 70%;"></div>
+  <div class="info-box"><strong>Medulla (Oblongata)</strong><br>Controls breathing, heart rate, and reflexes.</div>
 
   <!-- 18. Corpus Callosum -->
-  <div class="dot" style="top: 37%; left: 45%;"></div>
-  <div class="info-box"><strong>Corpus Callosum</strong><br>Connects the brain’s hemispheres.</div>
+  <div class="dot" style="top: 35%; left: 45%;"></div>
+  <div class="info-box"><strong>Corpus Callosum</strong><br>Connects the left and right hemispheres.</div>
 
   <!-- 19. Pons -->
-  <div class="dot" style="top: 70%; left: 43%;"></div>
-  <div class="info-box"><strong>Pons</strong><br>Relays signals between the cerebrum and cerebellum.</div>
+  <div class="dot" style="top: 75%; left: 47%;"></div>
+  <div class="info-box"><strong>Pons</strong><br>Relays information between the brain and spinal cord.</div>
 
   <!-- 20. Basal Ganglia -->
-  <div class="dot" style="top: 60%; left: 50%;"></div>
-  <div class="info-box"><strong>Basal Ganglia</strong><br>Coordinates movement and habit formation.</div>
-</div>
-
-</body>
-</html>
